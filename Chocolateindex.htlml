@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Chocolate Day</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #5c3a21;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/5;
+  perspective: 1000px;
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #c49a6c, #8b5e3c);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: transform 1s ease, opacity 1s ease;
+  z-index: 2;
+}
+
+.wrapper.open {
+  transform: rotateY(120deg) translateX(120px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chocolate {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #3b1f0f;
+  border-radius: 20px;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.7),
+              0 10px 25px rgba(0,0,0,0.6);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 6px;
+  padding: 12px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 1s ease;
+}
+
+.chocolate.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.piece {
+  background: #5a2e16;
+  border-radius: 6px;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.15),
+              inset 0 -2px 4px rgba(0,0,0,0.4);
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 22px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 1s ease 0.8s;
+}
+
+.message.show {
+  opacity: 1;
+}
+
+@media (max-width: 400px) {
+  .message { font-size: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <input id="nameInput" placeholder="Enter your name">
+
+  <div class="scene">
+    <div class="wrapper" id="wrapper">TAP TO OPEN</div>
+
+    <div class="chocolate" id="chocolate">
+      <!-- 24 chocolate pieces -->
+      <div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div>
+      <div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div>
+      <div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div>
+      <div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div>
+      <div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div>
+      <div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div>
+    </div>
+  </div>
+
+  <div class="message" id="message"></div>
+
+</div>
+
+<script>
+const wrapper = document.getElementById("wrapper");
+const chocolate = document.getElementById("chocolate");
+const message = document.getElementById("message");
+const nameInput = document.getElementById("nameInput");
+
+wrapper.addEventListener("click", () => {
+  const name = nameInput.value.trim() || "Someone Special";
+
+  wrapper.classList.add("open");
+  chocolate.classList.add("show");
+
+  message.textContent = "Happy Chocolate Day, " CHAMAM CHAMAI "! 🍫❤️";
+  message.classList.add("show");
+});
+</script>
+
+</body>
+</html>
